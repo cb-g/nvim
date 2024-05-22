@@ -1,5 +1,10 @@
 # Neo**vim** configuration for Mac arm64
 
+## screenshots
+
+<img src="img/startify.png" width="500px"><br>
+<img src="img/lazy.png" width="500px">
+
 ## features
 
 - goes well with [Alacritty](https://github.com/alacritty/alacritty)
