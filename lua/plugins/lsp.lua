@@ -22,6 +22,7 @@ return {
     -- event = 'InsertEnter',
     dependencies = {
       {'L3MON4D3/LuaSnip'},
+      {'hrsh7th/cmp-nvim-lsp'},
     },
     config = function()
       local lsp_zero = require('lsp-zero')
@@ -42,6 +43,10 @@ return {
           expand = function(args)
             require('luasnip').lsp_expand(args.body)
           end,
+        },
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'buffer' },
         },
       })
     end,
@@ -80,7 +85,7 @@ return {
           'html', -- HTML
 			    'jsonls', -- JSON
           'julials', -- Julia			
-          'ltex', -- LaTeX
+          'texlab', -- LaTeX
 			    'lua_ls', -- Lua
           'markdown_oxide', -- Markdown
           'ocamllsp', -- OCaml
@@ -97,9 +102,39 @@ return {
             require('lspconfig')[server_name].setup({})
           end,
 
+          -- lua
           lua_ls = function()
             local lua_opts = lsp_zero.nvim_lua_ls()
             require('lspconfig').lua_ls.setup(lua_opts)
+          end,
+
+          -- latex
+          texlab = function()
+          require('lspconfig').texlab.setup{
+            settings = {
+              texlab = {
+                auxDirectory = ".",
+                bibtexFormatter = "texlab",
+                build = {
+                  args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
+                  executable = "latexmk",
+                  onSave = true
+                },
+                chktex = {
+                  onEdit = true,
+                  onOpenAndSave = true
+                },
+                formatterLineLength = 80,
+                forwardSearch = {
+                  args = {}
+                },
+                latexFormatter = "latexindent",
+                latexindent = {
+                  modifyLineBreaks = true
+                  }
+                }
+              }
+            }
           end,
         }
       })
@@ -131,9 +166,33 @@ return {
 		"R-nvim/cmp-r"
 	},
 
-  -- julialang:
+  -- julialang
 	{
 		'JuliaEditorSupport/julia-vim'
 	},
+
+  -- latex
+  {
+    "lervag/vimtex",
+    lazy = false,
+    -- tag = "v2.15",
+    init = function()
+      vim.g.vimtex_compiler_latexmk = {
+      build_dir = 'build',
+      continuous = 1,
+      options = {
+        '-shell-escape',
+        '-verbose',
+        '-file-line-error',
+        '-interaction=nonstopmode',
+        '-synctex=1',
+        },
+      }
+      vim.g.vimtex_quickfix_mode = 0
+      vim.api.nvim_set_keymap('n', '<leader>ll', '<cmd>VimtexCompile<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>lv', '<cmd>VimtexView<CR>', { noremap = true, silent = true })
+      vim.api.nvim_set_keymap('n', '<leader>lc', '<cmd>VimtexClean<CR>', { noremap = true, silent = true })
+    end
+  },
 
 }
