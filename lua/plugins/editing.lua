@@ -1,5 +1,5 @@
 return {
-  
+
   -- autocomplete brackets and quotes
   {
     'windwp/nvim-autopairs',
@@ -7,7 +7,7 @@ return {
       require('nvim-autopairs').setup()
     end,
   },
-  
+
   -- (un)comment all highlighted lines
   {
     'terrortylor/nvim-comment',

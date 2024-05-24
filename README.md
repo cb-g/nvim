@@ -9,6 +9,7 @@
 
 - goes well with [Alacritty](https://github.com/alacritty/alacritty)
 - plugin manager: [lazy.nvim](https://github.com/folke/lazy.nvim)
+- LSP setup: Lua, LaTeX, R, Python, Julia, OCaml.
 
 ## zsh
 
@@ -36,6 +37,13 @@ brew install ripgrep
 brew list --versions ripgrep
 ```
 ripgrep 14.1.0
+
+```zsh
+brew install black
+
+brew list --versions black
+```
+black 24.4.2
 
 ```zsh
 brew tap homebrew/cask-fonts

@@ -189,10 +189,19 @@ return {
         },
       }
       vim.g.vimtex_quickfix_mode = 0
-      vim.api.nvim_set_keymap('n', '<leader>ll', '<cmd>VimtexCompile<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<leader>lv', '<cmd>VimtexView<CR>', { noremap = true, silent = true })
-      vim.api.nvim_set_keymap('n', '<leader>lc', '<cmd>VimtexClean<CR>', { noremap = true, silent = true })
-    end
+      local opts = { noremap = true, silent = true }
+      vim.api.nvim_set_keymap('n', '<leader>ll', '<cmd>VimtexCompile<CR>', opts)
+      vim.api.nvim_set_keymap('n', '<leader>lv', '<cmd>VimtexView<CR>', opts)
+      vim.api.nvim_set_keymap('n', '<leader>lc', '<cmd>VimtexClean<CR>', opts)
+    end,
   },
+
+  {
+    'ocaml/vim-ocaml',
+    init = function()
+      local home = os.getenv("HOME")
+      vim.opt.runtimepath:append(home .. "/.opam/default/share/ocp-indent/vim")
+    end,
+  }
 
 }
