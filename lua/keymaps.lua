@@ -45,7 +45,7 @@ akm('n', 'N', 'Nzzzv', o)
 akm('x', '<leader>p', '"_dP', o)
 
 -- black formatting for python. careful: auto-writes changes. 
-km('n', '<leader>bf', ':!black %<cr>')
+km('n', '<leader>bf', ':!black "%"<cr>')
 
 -- ocaml dune
 akm('n', '<leader>db', ':!dune build<CR>', o)

@@ -89,6 +89,28 @@ rm -rf $HOME/.local/share/nvim
 rm -rf $HOME/.local/state/nvim
 ```
 
+## alacritty.toml
+
+```toml
+[colors]
+transparent_background_colors = true
+
+[window]
+opacity = 0.75
+
+[window.padding]
+x = 0
+y = 0
+
+[window.dimensions]
+columns = 700
+lines = 90
+
+[window.position]
+x = 800
+y = 150
+```
+
 ## references 
 
 - [CadeMichael](https://github.com/CadeMichael/nvim)
