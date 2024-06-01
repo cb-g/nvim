@@ -2,8 +2,7 @@
 
 ## screenshots
 
-<img src="img/startify.png" width="500px"><br>
-<img src="img/lazy.png" width="500px">
+<img src="img/tmux.png" width="500px">
 
 ## features
 
@@ -89,9 +88,24 @@ brew list --versions tmux
 tmux 3.4_1
 
 ```zsh
+brew install yq
+
+brew list --versions yq
+```
+yq 4.44.1
+
+```zsh
 echo "alias vim=nvim" >> ~/.zshrc
 
 echo 'alias vimc='\''cd "$HOME/.config/nvim"'\''' >> ~/.zshrc
+
+source ~/.zshrc
+```
+
+```zsh
+chmod +x rm_latex_aux.sh
+
+echo "alias cleantex='\$HOME/.config/nvim/rm_latex_aux.sh'" >> ~/.zshrc
 
 source ~/.zshrc
 ```
@@ -103,7 +117,7 @@ git clone https://github.com/cb-g/nvim
 ```
 
 ```zsh
-tmux new -s s
+tmux
 ```
 install tmux plugins with `ctrl-s shift-i`
 
@@ -133,20 +147,25 @@ rm -rf $HOME/.config/nvim
 transparent_background_colors = true
 
 [window]
+startup_mode = "Maximized"
 opacity = 0.75
+blur = false
 decorations = "Buttonless"
 
 [window.padding]
 x = 0
 y = 0
 
-[window.dimensions]
-columns = 700
-lines = 90
+# [window.dimensions]
+# columns = 700
+# lines = 90
 
 [window.position]
 x = 800
 y = 150
+
+[font]
+size = 17
 
 [font.normal]
 family = "Hasklug Nerd Font"
@@ -155,74 +174,11 @@ family = "Hasklug Nerd Font"
 TERM = "xterm-256color"
 ```
 
-## ~/.tmux.conf
+## dotfiles
 
-```
-set -g default-terminal "tmux-256color"
-set -ag terminal-overrides ",xterm-256color:RGB"
+[~/.tmux.conf](dotfiles/.tmux.conf)
 
-set -g prefix C-s
-unbind C-b
-bind-key C-s send-prefix
-
-unbind %
-bind | split-window -h 
-
-unbind '"'
-bind - split-window -v
-
-unbind r
-bind r source-file ~/.tmux.conf
-
-bind h resize-pane -L 4
-bind j resize-pane -U 4
-bind k resize-pane -D 4
-bind l resize-pane -R 4
-
-set -g mouse on
-
-set -sg escape-time 1
-
-## vim visual mode for tmux:
-# set-window-option -g mode-keys vi
-# bind-key -T copy-mode-vi 'v' send -X begin-selection # start selecting text with "v"
-# bind-key -T copy-mode-vi 'y' send -X copy-selection # copy text with "y"
-# unbind -T copy-mode-vi MouseDragEnd1Pane
-
-## install plugins with ctrl-s shift-i
-set -g @plugin 'tmux-plugins/tpm'
-# set -g @plugin 'christoomey/vim-tmux-navigator'
-## or customize
-## 'alexghergh/nvim-tmux-navigation'
-is_vim="ps -o state= -o comm= -t '#{pane_tty}' \
-    | grep -iqE '^[^TXZ ]+ +(\\S+\\/)?g?(view|n?vim?x?)(diff)?$'"
-
-bind-key -n 'C-h' if-shell "$is_vim" 'send-keys C-h' 'select-pane -L'
-bind-key -n 'C-j' if-shell "$is_vim" 'send-keys C-j' 'select-pane -U'
-bind-key -n 'C-k' if-shell "$is_vim" 'send-keys C-k' 'select-pane -D'
-bind-key -n 'C-l' if-shell "$is_vim" 'send-keys C-l' 'select-pane -R'
-
-tmux_version='$(tmux -V | sed -En "s/^tmux ([0-9]+(.[0-9]+)?).*/\1/p")'
-
-if-shell -b '[ "$(echo "$tmux_version < 3.0" | bc)" = 1 ]' \
-    "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\'  'select-pane -l'"
-if-shell -b '[ "$(echo "$tmux_version >= 3.0" | bc)" = 1 ]' \
-    "bind-key -n 'C-\\' if-shell \"$is_vim\" 'send-keys C-\\\\'  'select-pane -l'"
-
-bind-key -n 'C-Space' if-shell "$is_vim" 'send-keys C-Space' 'select-pane -t:.+'
-
-bind-key -T copy-mode-vi 'C-h' select-pane -L
-bind-key -T copy-mode-vi 'C-j' select-pane -U
-bind-key -T copy-mode-vi 'C-k' select-pane -D
-bind-key -T copy-mode-vi 'C-l' select-pane -R
-bind-key -T copy-mode-vi 'C-\' select-pane -l
-bind-key -T copy-mode-vi 'C-Space' select-pane -t:.+
-
-## this must be here on the final line
-run '~/.tmux/plugins/tpm/tpm'
-```
-
-## references 
+## references
 
 - [CadeMichael](https://github.com/CadeMichael/nvim)
 - [cpow](https://github.com/cpow/neovim-for-newbs/)

@@ -10,7 +10,7 @@ vim.g.mapleader = " "
 km({"n", "v"}, "<leader>y", [["+y]])
 
 -- back-to-file-explorer (Netrw Directory Listing) shortcut
-km("n", "<leader>q", vim.cmd.Ex)
+km("n", "<leader>w", vim.cmd.Ex)
 
 -- scroll through opened buffers
 km("n", "<leader>n", ":bn<cr>")
@@ -50,3 +50,6 @@ km('n', '<leader>bf', ':!black "%"<cr>')
 -- ocaml dune
 akm('n', '<leader>db', ':!dune build<CR>', o)
 akm('n', '<leader>dr', ':!dune exec ./bin/main.exe<CR>', o)
+
+-- remove LaTeX auxiliary files from pwd
+km('n', '<Leader>cl', '<cmd>!$HOME/.config/nvim/rm_latex_aux.sh<cr>')

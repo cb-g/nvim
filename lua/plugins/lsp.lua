@@ -32,12 +32,12 @@ return {
       cmp.setup({
         formatting = lsp_zero.cmp_format({ details = true }),
         mapping = cmp.mapping.preset.insert({
-          ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-d>'] = cmp.mapping.scroll_docs(4),
-          ['<C-f>'] = cmp_action.luasnip_jump_forward(),
-          ['<C-b>'] = cmp_action.luasnip_jump_backward(),
-          ['<C-Enter>'] = cmp.mapping.confirm({ select = true }),
+          ['<S-Space>'] = cmp.mapping.complete(),
+          ['<S-u>'] = cmp.mapping.scroll_docs(-4),
+          ['<S-d>'] = cmp.mapping.scroll_docs(4),
+          ['<S-f>'] = cmp_action.luasnip_jump_forward(),
+          ['<S-b>'] = cmp_action.luasnip_jump_backward(),
+          ['<S-s>'] = cmp.mapping.confirm({ select = true }),
         }),
         snippet = {
           expand = function(args)
