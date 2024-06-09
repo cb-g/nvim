@@ -2,7 +2,7 @@
 
 ## screenshots
 
-<img src="img/tmux.png" width="500px">
+<img src="img/tmux.png" width="700px">
 
 ## features
 

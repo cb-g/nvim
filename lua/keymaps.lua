@@ -13,8 +13,8 @@ km({"n", "v"}, "<leader>y", [["+y]])
 km("n", "<leader>w", vim.cmd.Ex)
 
 -- scroll through opened buffers
-km("n", "<leader>n", ":bn<cr>")
-km("n", "<leader>p", ":bp<cr>")
+km("n", "<leader>m", ":bn<cr>")
+km("n", "<leader>n", ":bp<cr>")
 
 -- close the currently viewed buffer
 km("n", "<leader>x", ":bd<cr>")
@@ -47,9 +47,13 @@ akm('x', '<leader>p', '"_dP', o)
 -- black formatting for python. careful: auto-writes changes. 
 km('n', '<leader>bf', ':!black "%"<cr>')
 
--- ocaml dune
+-- OCaml
+-- dune
 akm('n', '<leader>db', ':!dune build<CR>', o)
 akm('n', '<leader>dr', ':!dune exec ./bin/main.exe<CR>', o)
 
--- remove LaTeX auxiliary files from pwd
+-- LaTeX
+-- remove auxiliary files from pwd
 km('n', '<Leader>cl', '<cmd>!$HOME/.config/nvim/rm_latex_aux.sh<cr>')
+-- single shot compilation
+km('n', '<Leader>ss', ':VimtexCompileSS<cr>', o)

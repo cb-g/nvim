@@ -1,8 +1,8 @@
 #!/bin/zsh
 
 # array of LaTeX-related file extensions to delete
-# extensions=("aux" "log" "out" "toc" "lof" "lot" "fls" "fdb_latexmk" "synctex.gz" "nav" "snm" "bbl" "blg")
-extensions=("aux" "log" "out" "fls" "fdb_latexmk" "synctex.gz")
+# extensions=("aux" "log" "out" "toc" "lof" "lot" "fls" "fdb_latexmk" "synctex.gz" "nav" "snm" "bbl" "blg" "xdv")
+extensions=("aux" "log" "out" "toc" "fls" "fdb_latexmk" "synctex.gz" "xdv")
 
 # loop through each extension and delete the matching files
 for ext in "${extensions[@]}"; do

@@ -118,7 +118,7 @@ return {
                 build = {
                   args = { "-pdf", "-interaction=nonstopmode", "-synctex=1", "%f" },
                   executable = "latexmk",
-                  onSave = true
+                  onSave = false
                 },
                 chktex = {
                   onEdit = true,
@@ -189,10 +189,19 @@ return {
         },
       }
       vim.g.vimtex_quickfix_mode = 0
-      local opts = { noremap = true, silent = true }
-      vim.api.nvim_set_keymap('n', '<leader>ll', '<cmd>VimtexCompile<CR>', opts)
-      vim.api.nvim_set_keymap('n', '<leader>lv', '<cmd>VimtexView<CR>', opts)
-      vim.api.nvim_set_keymap('n', '<leader>lc', '<cmd>VimtexClean<CR>', opts)
+      local o = { noremap = true, silent = true }
+
+      -- start continuous mode, which compiles upon saving
+      vim.api.nvim_set_keymap('n', '<leader>ll', '<cmd>VimtexCompile<CR>', o)
+
+      -- view pdf
+      vim.api.nvim_set_keymap('n', '<leader>lv', '<cmd>VimtexView<CR>', o)
+
+      -- clear auxiliary files
+      vim.api.nvim_set_keymap('n', '<leader>lc', '<cmd>VimtexClean<CR>', o)
+
+      -- more LaTeX-related keymaps:
+      -- lua/keymaps.lua
     end,
   },
 
