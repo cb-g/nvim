@@ -2,7 +2,7 @@
 
 ## screenshots
 
-<img src="img/tmux.png" width="700px">
+<img src="img/tmux.png" width="800px">
 
 ## features
 
@@ -11,6 +11,58 @@
 - LSP setup: Lua, LaTeX, R, Python, Julia, OCaml.
 
 ## zsh
+
+### Finder
+
+read current value:
+```zsh
+defaults read com.apple.finder "AppleShowAllFiles"
+```
+0
+
+reset to default value:
+```zsh
+defaults delete com.apple.finder "AppleShowAllFiles" && killall Finder
+```
+
+do not show hidden files:
+```zsh
+defaults write com.apple.finder "AppleShowAllFiles" -bool "false" && killall Finder
+```
+
+show hidden files:
+```zsh
+defaults write com.apple.finder "AppleShowAllFiles" -bool "true" && killall Finder
+```
+
+```zsh
+defaults read com.apple.finder "AppleShowAllFiles"
+```
+1
+
+### Haskell
+
+```zsh
+curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+```
+
+### OCaml
+
+```zsh
+bash -c "sh <(curl -fsSL https://raw.githubusercontent.com/ocaml/opam/master/shell/install.sh)"
+
+opam init
+
+opam install ocaml-lsp-server odoc ocamlformat utop
+```
+
+### Julia
+
+```zsh
+curl -fsSL https://install.julialang.org | sh
+```
+
+### Homebrew
 
 ```zsh
 brew --version
@@ -93,6 +145,8 @@ brew install yq
 brew list --versions yq
 ```
 yq 4.44.1
+
+### neovim
 
 ```zsh
 echo "alias vim=nvim" >> ~/.zshrc

@@ -211,6 +211,12 @@ return {
       local home = os.getenv("HOME")
       vim.opt.runtimepath:append(home .. "/.opam/default/share/ocp-indent/vim")
     end,
-  }
+  },
+
+  {
+    'mrcjkb/haskell-tools.nvim',
+    version = '^3',
+    lazy = false,
+  },
 
 }
