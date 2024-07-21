@@ -12,6 +12,7 @@
 
 ## zsh
 
+
 ### Finder
 
 read current value:
@@ -76,11 +77,26 @@ source ~/.zprofile
 ```
 
 ```zsh
+brew install git
+
+brew list --versions git
+```
+git 2.45.2
+
+
+```zsh
+brew install --cask git-credential-manager
+
+brew list --cask --versions git-credential-manager
+```
+git-credential-manager 2.5.1
+
+```zsh
 brew install neovim
 
 brew list --versions neovim
 ```
-neovim 0.9.5
+neovim 0.10.0
 
 ```zsh
 brew install ripgrep
@@ -144,7 +160,7 @@ brew install yq
 
 brew list --versions yq
 ```
-yq 4.44.1
+yq 4.44.2
 
 ### neovim
 
