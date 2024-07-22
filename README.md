@@ -99,6 +99,13 @@ brew list --versions neovim
 neovim 0.10.0
 
 ```zsh
+brew install node
+
+brew list --versions node
+```
+node 22.5.1
+
+```zsh
 brew install ripgrep
 
 brew list --versions ripgrep
